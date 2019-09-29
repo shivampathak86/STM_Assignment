@@ -17,73 +17,33 @@ namespace TestCases
         
 
         [TestMethod]
-
-        public void Login()
+        //[DataSource("System)]
+        public void LoginTest()
 
 
         {
             LoginPage loginPage = new LoginPage(Browser.WebDriver);
-            loginPage.EnterEmailId("stmphase1group33@gmail.com").EnterPassword("12345678").ClickOnLoginBtn();
+
+
+            loginPage.EnterEmailId("").EnterPassword("").ClickOnLoginBtn();//TestContext.DataRow["Input1"].ToString()).EnterPassword(TestContext.DataRow["Input2"].ToString()).ClickOnLoginBtn();
+            
+            if(loginPage.EmailError)
+            {
+                Assert.Fail("Please enter valid email");
+            }
+            else if(loginPage.PwdError)
+            {
+                Assert.Fail("Please Enter Atleast 6 characters");
+            }
+
+            else
+            {
+                Assert.IsTrue(true, "Login Success");
+            }
+           
         }
 
-        [TestMethod]
-
-        public void TC001_ValidDomainTestforEmail()
-        {
-
-            HomePage homePage = new HomePage(Browser.WebDriver);
-            homePage.GotoFeeBackPage(Browser.WebDriver).EnterEmail(TestContext.DataRow["ValidFeedBackEmailInput"].ToString()).
-                EnterPhoneNumber(TestContext.DataRow["ValidDomainforMObile"].ToString()).SelectFeedBackAsBug().EnterFeedbackComment("test").
-                SubmitFeeback();
-            FeedBackPage feedbackPage = new FeedBackPage(Browser.WebDriver);
-            Assert.IsFalse(feedbackPage.GetEmailErrorText());
-
-
-        }
-
-        [TestMethod, DataSource("\\Datafile.Xls")]
-
-        public void TC002_InValidDomainTestforEmail()
-        {
-
-            HomePage homePage = new HomePage(Browser.WebDriver);
-            homePage.GotoFeeBackPage(Browser.WebDriver).EnterEmail(TestContext.DataRow["InValidFeedBackEmailInput"].ToString()).
-                EnterPhoneNumber(TestContext.DataRow["ValidDomainforMObile"].ToString()).SelectFeedBackAsBug().EnterFeedbackComment("test").
-                SubmitFeeback();
-            FeedBackPage feedbackPage = new FeedBackPage(Browser.WebDriver);
-            Assert.IsTrue(feedbackPage.GetEmailErrorText());
-
-
-        }
-
-
-        [TestMethod]
-
-        public void TC003_ValidDomainTestforMobile()
-        {
-
-            HomePage homePage = new HomePage(Browser.WebDriver);
-            homePage.GotoFeeBackPage(Browser.WebDriver).EnterEmail(TestContext.DataRow["ValidFeedBackEmailInput"].ToString()).
-                EnterPhoneNumber(TestContext.DataRow["ValidDomainforMObile"].ToString()).SelectFeedBackAsBug().EnterFeedbackComment("test").
-                SubmitFeeback();
-            FeedBackPage feedbackPage = new FeedBackPage(Browser.WebDriver);
-            Assert.IsFalse(feedbackPage.GetMobileErrorText());
-
-
-        }
-
-        public void TC004_InValidDomainTestforMobile()
-        {
-
-            HomePage homePage = new HomePage(Browser.WebDriver);
-            homePage.GotoFeeBackPage(Browser.WebDriver).EnterEmail(TestContext.DataRow["ValidFeedBackEmailInput"].ToString()).
-                EnterPhoneNumber(TestContext.DataRow["InValidDomainforMObile"].ToString()).SelectFeedBackAsBug().EnterFeedbackComment("test").
-                SubmitFeeback();
-            FeedBackPage feedbackPage = new FeedBackPage(Browser.WebDriver);
-            Assert.IsTrue(feedbackPage.GetMobileErrorText());
-
-
-        }
+      
 
 
 

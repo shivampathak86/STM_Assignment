@@ -10,6 +10,7 @@ namespace FrameworkLibrary.PageObjectModel
 {
     public class LoginPage
     {
+        #region pirvate fields 
         [FindsBy(How = How.Id, Using = "txtEmail")]
 
         private IWebElement m_EmailID;
@@ -26,7 +27,21 @@ namespace FrameworkLibrary.PageObjectModel
         private IWebElement m_Loginbtn;
         private By m_LocatorForLoginbtn = By.Id("btnLogin");
 
+        [FindsBy(How = How.XPath, Using = "//label[@for='txtEmail' and @class ='error']")]
+        private IWebElement m_ErrorForEmail;
 
+        [FindsBy(How = How.XPath, Using = "//label[@for='txtpwd' and @class ='error']")]
+        private IWebElement m_ErrorForPwd;
+        #endregion
+
+        #region Public properties
+        public bool EmailError => m_ErrorForEmail.Displayed ? true : false;
+
+        public bool PwdError => m_ErrorForPwd.Displayed ? true : false;
+        #endregion
+
+
+#region public methods
         public LoginPage(IWebDriver driver) : base()
         {
             PageFactory.InitElements(driver, this);
@@ -58,6 +73,9 @@ namespace FrameworkLibrary.PageObjectModel
             m_Loginbtn.Click();
             return this;
         }
+#endregion
+
+
     }
 
 }

@@ -24,5 +24,11 @@ namespace FrameworkLibrary
             
         }
 
+        [TestCleanup]
+        public void Cleanup()
+        {
+            Browser.Close();
+        }
+
     }
 }

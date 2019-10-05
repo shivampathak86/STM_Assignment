@@ -35,9 +35,38 @@ namespace FrameworkLibrary.PageObjectModel
         #endregion
 
         #region Public properties
-        public bool EmailError => m_ErrorForEmail.Displayed ? true : false;
+        public bool EmailError
+        {
 
-        public bool PwdError => m_ErrorForPwd.Displayed ? true : false;
+            get
+            {
+                try
+                {
+                    return m_ErrorForEmail.Displayed;
+                }
+                catch(Exception e)
+                {
+                    return false;
+                }
+                
+            }
+        }
+
+        public bool PwdError
+        {
+            get
+            {
+                try
+                {
+
+                    return m_ErrorForPwd.Displayed;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
+        }
         #endregion
 
 

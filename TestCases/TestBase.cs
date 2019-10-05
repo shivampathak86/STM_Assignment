@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FrameworkLibrary;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FrameworkLibrary
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FrameworkLibrary;
+using FrameworkLibrary.Utility;
+
+namespace TestCases
 { 
 
     [TestClass]
     public class TestBase
     {
+        internal ExcelReader excelReader;
         [TestInitialize]
 
         public virtual void Init()
@@ -21,7 +24,9 @@ namespace FrameworkLibrary
 
             Browser.WebDriverInstance();
             Browser.GotoWebsite("https://www.ticketnew.com/OnlineTheatre/Theatre/UserLogin.aspx/");
-            
+             excelReader = new ExcelReader();
+
+
         }
 
         [TestCleanup]

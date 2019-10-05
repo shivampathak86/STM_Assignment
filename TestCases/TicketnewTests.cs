@@ -1,5 +1,6 @@
-﻿using FrameworkLibrary;
+﻿
 using FrameworkLibrary.PageObjectModel;
+using FrameworkLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using System;
@@ -15,9 +16,9 @@ namespace TestCases
     {
 
         
-
         [TestMethod]
-        //[DataSource("System)]
+     
+      [DataSource("System.Data.Odbc", "Dsn=Excel Files;Driver={Microsoft Excel Driver (*.xlsx)};dbq=|DataDirectory|\\STM_Assignment_TestData.xls;defaultdir=.;driverid=790;maxbuffersize=2048;pagetimeout=5;readonly=true", "Sheet1$", DataAccessMethod.Sequential)]
         public void LoginTest()
 
 
@@ -25,9 +26,8 @@ namespace TestCases
             LoginPage loginPage = new LoginPage(Browser.WebDriver);
 
 
-            loginPage.EnterEmailId("").EnterPassword("").ClickOnLoginBtn();//TestContext.DataRow["Input1"].ToString()).EnterPassword(TestContext.DataRow["Input2"].ToString()).ClickOnLoginBtn();
-            
-            if(loginPage.EmailError)
+            loginPage.EnterEmailId(TestContext.DataRow["Login"].ToString()).EnterPassword(TestContext.DataRow["Pwd"].ToString()).ClickOnLoginBtn();
+            if (loginPage.EmailError)
             {
                 Assert.Fail("Please enter valid email");
             }

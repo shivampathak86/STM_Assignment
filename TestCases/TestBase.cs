@@ -8,26 +8,29 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FrameworkLibrary;
 using FrameworkLibrary.Utility;
+using FrameworkLibrary.PageObjectModel;
 
 namespace TestCases
 { 
 
-    [TestClass]
+   [TestClass]
     public class TestBase
     {
-        internal ExcelReader excelReader;
-        [TestInitialize]
+        
+       
+        
+        public  TestBase()
 
-        public virtual void Init()
+            {
+                
+              Browser.WebDriverInstance();
+              Browser.GotoWebsite("https://www.ticketnew.com/OnlineTheatre/Theatre/UserRegisteration.aspx/");
 
-        {
+             }
 
-            Browser.WebDriverInstance();
-            Browser.GotoWebsite("https://www.ticketnew.com/OnlineTheatre/Theatre/UserLogin.aspx/");
-             excelReader = new ExcelReader();
-
-
-        }
+           
+         
+      
 
         [TestCleanup]
         public void Cleanup()

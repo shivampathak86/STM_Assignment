@@ -86,13 +86,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignmenPhase2Test.cs" />
     <Compile Include="AssignmenPhase1Test.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="STM_Assignment_TestData.xls">
+    <None Include="TestData.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

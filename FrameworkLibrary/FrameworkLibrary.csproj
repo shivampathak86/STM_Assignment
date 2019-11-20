@@ -132,6 +132,7 @@
     <Compile Include="PageObjectModel\FeedBackPage.cs" />
     <Compile Include="PageObjectModel\HomePage.cs" />
     <Compile Include="PageObjectModel\LoginPage.cs" />
+    <Compile Include="PageObjectModel\RegistrationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="Utility\ExcelReader.cs" />

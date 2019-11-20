@@ -14,8 +14,8 @@ namespace TestCases
     [TestClass]
    public class AssignmenPhase1Test : TestBase
     {
-
         
+
         [TestMethod]
      
       [DataSource("System.Data.Odbc", "Dsn=Excel Files;Driver={Microsoft Excel Driver (*.xlsx)};dbq=|DataDirectory|\\STM_Assignment_TestData.xls;defaultdir=.;driverid=790;maxbuffersize=2048;pagetimeout=5;readonly=true", "Sheet1$", DataAccessMethod.Sequential)]
